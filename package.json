@@ -1,0 +1,37 @@
+{
+  "name": "pruebagit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "node-sass --include-path scss sass/estilos.scss styles.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@mdc_github:mayrachiotta/MayraChiotta"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^7.0.1",
+    "nodemon": "^2.0.16"
+  },
+  "dependencies": {
+    "color-support": "^1.1.3",
+    "is-ci": "^2.0.0",
+    "mkdirp": "^1.0.4",
+    "node-gyp": "^8.4.1",
+    "nopt": "^5.0.0",
+    "rc": "^1.2.8",
+    "resolve": "^1.22.0",
+    "rimraf": "^3.0.2",
+    "sass-graph": "^4.0.0",
+    "semver": "^7.3.7",
+    "sshpk": "^1.17.0",
+    "touch": "^3.1.0",
+    "uuid": "^3.4.0",
+    "which": "^2.0.2"
+  }
+}

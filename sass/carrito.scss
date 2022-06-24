@@ -1,0 +1,40 @@
+header {
+
+
+.header_carrito {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0px 5px;
+
+    a {
+        .header_number {
+
+            font-family: $font;
+            color: $colorsecundario;
+            font-size: 25px;
+            margin-right: 10px;
+        }
+
+    }
+   
+}
+.container_title {
+
+    background-color: $colorsecundario;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    height: 80px;
+    color: black;
+
+    H1 {
+
+        color: $colorpink               ;
+        font-family: $font;
+        font-size: 30px;
+    }
+}
+
+}

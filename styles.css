@@ -1,0 +1,88 @@
+* {
+  margin: 0%;
+  padding: 0%; }
+
+body {
+  background-color: #ecebe3; }
+  body .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../imagenes/sushi-header.png);
+    height: 400px; }
+    body .header .header_back {
+      height: 250px; }
+  body .nav_links {
+    list-style: none; }
+    body .nav_links a {
+      text-decoration: none;
+      font-family: "Fredoka One", cursive;
+      color: #023a47; }
+
+.title {
+  background-color: #ecebe3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  margin-top: 100px; }
+  .title .title_1 {
+    display: flex;
+    justify-content: center;
+    background-color: #023a47;
+    margin: 15px;
+    padding: 10px 10px;
+    width: 400px;
+    border-radius: 10px; }
+    .title .title_1 a {
+      font-family: "Fredoka One", cursive;
+      font-size: 20px;
+      text-decoration: none;
+      color: #ecebe3; }
+
+.footer_daniela {
+  background-color: #FF7676;
+  height: 100px;
+  display: flex;
+  justify-content: flex-end; }
+  .footer_daniela .redes {
+    display: flex;
+    align-self: center;
+    margin-right: 34%; }
+    .footer_daniela .redes a {
+      padding: 10px 10px; }
+    .footer_daniela .redes .redes_icon {
+      width: 40px;
+      height: 40px; }
+  .footer_daniela .footer_container_img {
+    height: 100px;
+    width: 150px; }
+    .footer_daniela .footer_container_img .footer_img {
+      width: 100%;
+      height: 100%;
+      padding: 5px 5px; }
+
+header .header_carrito {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0px 5px; }
+  header .header_carrito a .header_number {
+    font-family: "Fredoka One", cursive;
+    color: #025b6d;
+    font-size: 25px;
+    margin-right: 10px; }
+
+header .container_title {
+  background-color: #025b6d;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 80px;
+  color: black; }
+  header .container_title H1 {
+    color: #FF7676;
+    font-family: "Fredoka One", cursive;
+    font-size: 30px; }

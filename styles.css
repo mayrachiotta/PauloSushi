@@ -9,7 +9,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url(./imagenes/sushi-header.png);
+    background-image: url(../imagenes/sushi-header.png);
     height: 400px; }
     body .header .header_back {
       height: 250px; }

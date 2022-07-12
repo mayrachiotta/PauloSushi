@@ -37,4 +37,37 @@ header {
     }
 }
 
+
+
+.table_precios {
+
+    div {
+        table {
+            tr{
+                
+                    .title_product {
+                        color: $colorpink;
+                        font-family: $font;
+                        
+                    }
+                    .porciones {
+                        font-size: 15px;
+                        color: $colorprimario;
+                        align-content: center;
+                        font-family: $font;
+                    }
+                    .description {
+                        color: $colorprimario;
+                        font-family: $font;
+
+                    }
+
+                    .precio {
+                        color: $colorpink
+                    }
+                  
+                
+            }
+        }
+    };
 }

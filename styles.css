@@ -86,3 +86,30 @@ header .container_title {
     color: #FF7676;
     font-family: "Fredoka One", cursive;
     font-size: 30px; }
+
+.title_menu {
+  display: flex;
+  justify-content: center;
+  align-content: center; }
+  .title_menu h2 {
+    color: #023a47;
+    font-family: "Fredoka One", cursive;
+    font-size: 50px;
+    font-weight: 400; }
+
+.table_precios div table tr .title_product {
+  color: #FF7676;
+  font-family: "Fredoka One", cursive; }
+
+.table_precios div table tr .porciones {
+  font-size: 15px;
+  color: #023a47;
+  align-content: center;
+  font-family: "Fredoka One", cursive; }
+
+.table_precios div table tr .description {
+  color: #023a47;
+  font-family: "Fredoka One", cursive; }
+
+.table_precios div table tr .precio {
+  color: #FF7676; }

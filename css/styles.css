@@ -69,33 +69,27 @@ header .header_carrito {
   justify-content: space-between;
   align-items: flex-end;
   padding: 0px 5px; }
+  header .header_carrito .img-sushi {
+    height: 150px; }
+  header .header_carrito .img-sushi2 {
+    height: 150px; }
   header .header_carrito a .header_number {
     font-family: "Fredoka One", cursive;
     color: #025b6d;
     font-size: 25px;
     margin-right: 10px; }
 
-header .container_title {
+.container_title {
   background-color: #025b6d;
   display: flex;
   justify-content: end;
   align-items: center;
   height: 80px;
   color: black; }
-  header .container_title H1 {
+  .container_title H1 {
     color: #FF7676;
     font-family: "Fredoka One", cursive;
     font-size: 30px; }
-
-.title_menu {
-  display: flex;
-  justify-content: center;
-  align-content: center; }
-  .title_menu h2 {
-    color: #023a47;
-    font-family: "Fredoka One", cursive;
-    font-size: 50px;
-    font-weight: 400; }
 
 .table_precios div table tr .title_product {
   color: #FF7676;
@@ -113,3 +107,13 @@ header .container_title {
 
 .table_precios div table tr .precio {
   color: #FF7676; }
+
+@media screen and (max-width: 660px) {
+  header .header_carrito .img-sushi {
+    height: 100px; }
+  header .header_carrito .img-sushi2 {
+    height: 120px; }
+  header .header_carrito a i {
+    display: none; }
+  header .header_carrito a p {
+    display: none; } }

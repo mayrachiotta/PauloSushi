@@ -1,25 +1,34 @@
 header {
+    .header_carrito {
 
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 0px 5px;
 
-.header_carrito {
+        .img-sushi {
 
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding: 0px 5px;
+            height: 150px;
+        }
 
-    a {
-        .header_number {
+        .img-sushi2 {
+            height: 150px;
+        }
 
-            font-family: $font;
-            color: $colorsecundario;
-            font-size: 25px;
-            margin-right: 10px;
+        a {
+            .header_number {
+
+                font-family: $font;
+                color: $colorsecundario;
+                font-size: 25px;
+                margin-right: 10px;
+            }
+
         }
 
     }
-   
 }
+
 .container_title {
 
     background-color: $colorsecundario;
@@ -31,7 +40,7 @@ header {
 
     H1 {
 
-        color: $colorpink               ;
+        color: $colorpink ;
         font-family: $font;
         font-size: 30px;
     }
@@ -43,31 +52,33 @@ header {
 
     div {
         table {
-            tr{
-                
-                    .title_product {
-                        color: $colorpink;
-                        font-family: $font;
-                        
-                    }
-                    .porciones {
-                        font-size: 15px;
-                        color: $colorprimario;
-                        align-content: center;
-                        font-family: $font;
-                    }
-                    .description {
-                        color: $colorprimario;
-                        font-family: $font;
+            tr {
 
-                    }
+                .title_product {
+                    color: $colorpink;
+                    font-family: $font;
 
-                    .precio {
-                        color: $colorpink
-                    }
-                  
-                
+                }
+
+                .porciones {
+                    font-size: 15px;
+                    color: $colorprimario;
+                    align-content: center;
+                    font-family: $font;
+                }
+
+                .description {
+                    color: $colorprimario;
+                    font-family: $font;
+
+                }
+
+                .precio {
+                    color: $colorpink
+                }
+
+
             }
         }
-    };
+    }
 }

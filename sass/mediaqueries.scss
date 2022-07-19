@@ -1,0 +1,21 @@
+@media screen and (max-width: 660px) {
+
+    header {
+        .header_carrito {
+            .img-sushi {
+                height: 100px;
+            }
+            .img-sushi2 {
+                height: 120px;
+            }
+            a {
+                i {
+                    display: none;
+                }
+                p {
+                    display: none;
+                }
+            }
+        }
+    }
+}

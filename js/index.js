@@ -26,14 +26,14 @@ const Opcion10 = new Menu(10, "ACEVICHADO", "Salmón y langostino acevichado con
 
 
 const Menus = [Opcion1, Opcion2, Opcion3, Opcion4, Opcion5, Opcion6, Opcion7, Opcion8, Opcion9, Opcion10]
-let menuGlobal= Menus
+
 /**
  * Incluyendo DOM
  */
 
 const generalTable = document.getElementById('generalTable')
 
-menuGlobal.forEach(menu => {
+Menus.forEach(menu => {
     generalTable.innerHTML += `
     
     <div>
@@ -46,23 +46,26 @@ menuGlobal.forEach(menu => {
     `
 })
 
+
 /**
  *Agregando EVENTOS
  */
 
-const botonCarro = document.getElementById("botonCarro")
+const botonCarro = document.getElementById("botonCarro") //utilizo mediante un metodo.
 
-botonCarro.addEventListener("click", () => { 
+botonCarro.addEventListener("click", () => { //"click es el nombre del evento"
     console.log("di click en button")
 })
 
 const input1 = document.getElementById("input1")
-input1.addEventListener('input', () => { 
+//const botonbusqueda = document.getElementById("botonbusqueda")
+input1.addEventListener('input', () => { //input es el evento
     generalTable.innerHTML = ""
 
-    menuGlobal = menuGlobal.filter(menuafiltrar => menuafiltrar.nombre.toLowerCase().includes(input1.value.toLowerCase()))
+    let menufiltrado = Menus.filter(menuafiltrar => menuafiltrar.nombre.toLowerCase().includes(input1.value.toLowerCase()))
+    console.log(menufiltrado)
 
-    menuGlobal.forEach(menufiltro => {
+    menufiltrado.forEach(menufiltro => {
 
         generalTable.innerHTML += `
         
@@ -86,8 +89,9 @@ selectSort.addEventListener('change', (event) => {
     let tipoOrden = event.target.value
 
 
-    menuGlobal = menuGlobal.sort((a, b) => tipoOrden == "asc" ? a.precio - b.precio : b.precio - a.precio)
-    menuGlobal.forEach(menufiltro => {
+    let ascendente = Menus.sort((a, b) => tipoOrden == "asc" ? a.precio - b.precio : b.precio - a.precio)
+    console.log(ascendente)
+    ascendente.forEach(menufiltro => {
 
         generalTable.innerHTML += `
         
@@ -98,10 +102,10 @@ selectSort.addEventListener('change', (event) => {
         </tr>
         </div>
         
+        
         `
     })
     console.log("Di click en boton")
-   
 })
 
 /**
@@ -135,3 +139,4 @@ class Carrito {
     }
 
 }
+

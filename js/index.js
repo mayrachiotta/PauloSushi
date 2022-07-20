@@ -1,3 +1,4 @@
+
 //DESAFIO 4
 /*
 /**
@@ -25,6 +26,83 @@ const Opcion10 = new Menu(10, "ACEVICHADO", "Salmón y langostino acevichado con
 
 
 const Menus = [Opcion1, Opcion2, Opcion3, Opcion4, Opcion5, Opcion6, Opcion7, Opcion8, Opcion9, Opcion10]
+let menuGlobal= Menus
+/**
+ * Incluyendo DOM
+ */
+
+const generalTable = document.getElementById('generalTable')
+
+menuGlobal.forEach(menu => {
+    generalTable.innerHTML += `
+    
+    <div>
+    <tr>
+    <td><h3 class="title_product d-flex"> ${menu.nombre} <p class="porciones ps-3 pt-2">8 PIEZAS</p></h3><p class="description">${menu.description}</p></td>
+    <td><h4 class="precio">${menu.precio} <i class="fa-solid fa-circle-plus ms-2"></i></h4></td>
+    </tr>
+    </div>
+
+    `
+})
+
+/**
+ *Agregando EVENTOS
+ */
+
+const botonCarro = document.getElementById("botonCarro")
+
+botonCarro.addEventListener("click", () => { 
+    console.log("di click en button")
+})
+
+const input1 = document.getElementById("input1")
+input1.addEventListener('input', () => { 
+    generalTable.innerHTML = ""
+
+    menuGlobal = menuGlobal.filter(menuafiltrar => menuafiltrar.nombre.toLowerCase().includes(input1.value.toLowerCase()))
+
+    menuGlobal.forEach(menufiltro => {
+
+        generalTable.innerHTML += `
+        
+        <div>
+        <tr>
+        <td><h3 class="title_product d-flex"> ${menufiltro.nombre} <p class="porciones ps-3 pt-2">8 PIEZAS</p></h3><p class="description">${menufiltro.description}</p></td>
+        <td><h4 class="precio">${menufiltro.precio} <i class="fa-solid fa-circle-plus ms-2"></i></h4></td>
+        </tr>
+        </div>
+        
+        
+        `
+    })
+
+})
+
+const selectSort = document.getElementById("selectSort")
+selectSort.addEventListener('change', (event) => {
+    generalTable.innerHTML = ""
+    console.log(event.target.value)
+    let tipoOrden = event.target.value
+
+
+    menuGlobal = menuGlobal.sort((a, b) => tipoOrden == "asc" ? a.precio - b.precio : b.precio - a.precio)
+    menuGlobal.forEach(menufiltro => {
+
+        generalTable.innerHTML += `
+        
+        <div>
+        <tr>
+        <td><h3 class="title_product d-flex"> ${menufiltro.nombre} <p class="porciones ps-3 pt-2">8 PIEZAS</p></h3><p class="description">${menufiltro.description}</p></td>
+        <td><h4 class="precio">${menufiltro.precio} <i class="fa-solid fa-circle-plus ms-2"></i></h4></td>
+        </tr>
+        </div>
+        
+        `
+    })
+    console.log("Di click en boton")
+   
+})
 
 /**
  * Definicion de clase de CarritoItem
@@ -55,46 +133,5 @@ class Carrito {
     SumarTotal() {
         this.total = this.selecciondemenu.reduce((acumulador, menuElemento) => acumulador + (menuElemento.cantidad * menuElemento.costo), 0)
     }
-    
+
 }
-
-/* Función que permite obtener el texto de los menus para visualizar en pantalla.
-*/
-
-function getMenu (menues) {
-    let acumulador= '¡Bienvenido a PAULO SUSHI! Seleccione el número de su pedido:\n'
-    
-    menues.forEach(menuaelegir => { 
-        acumulador+= menuaelegir.id + ') ' + menuaelegir.nombre + " " + " $" + menuaelegir.precio + "\n" 
-        
-    });
-    return acumulador + 'PRESIONE UNA LETRA PARA FINALIZAR SU PEDIDO'
-}
-
-function solicitarCantidad() {
-    let cantidad = prompt("Ingrese la cantidad que desea del menú seleccionado")
-    while (isNaN(cantidad)) {
-        cantidad = prompt("Ingrese la cantidad que desea del menú seleccionado")
-    }
-    return parseInt(cantidad)
-}
-
-let carrito = new Carrito([], 0)
-let menu = prompt(getMenu(Menus))
-
-while(!isNaN(menu)) {
-    let menuencontrado = (Menus.find(menuaelegir => menuaelegir.id == menu))
-    if (menuencontrado != undefined) {
-        let cantidad = solicitarCantidad()
-        let itemcarro = new CarritoItem(menuencontrado.id, cantidad, menuencontrado.precio)
-        carrito.agregarAlcarrito(itemcarro)
-    } else {
-        alert('El menu solicitado no es valido, intente nuevamente')
-    }
-    menu=prompt(getMenu(Menus))   
-}
-
-carrito.SumarTotal()
-alert(`El total de tu compra es $${carrito.total}`)
-
-

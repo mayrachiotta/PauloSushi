@@ -11,7 +11,7 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
 
     <script src="https://kit.fontawesome.com/bc7e4c6480.js" crossorigin="anonymous"></script>
 
@@ -25,74 +25,44 @@
     <header>
         <div class="header_carrito">
 
-            <img src="./imagenes/PauloSushi_menu.png" class="mt-2" height="100px" alt="">
-            <img src="./imagenes/MENU.png" class="mt-2" height="150px">
+            <img src="./imagenes/PauloSushi_menu.png" class="mt-2 img-sushi" alt="">
+            <img src="./imagenes/MENU.png" class="mt-2 img-sushi2">
             <a class=" mb-2 d-flex text-decoration-none text-secondary text-lg">
-                <i class="fa-solid fa-phone fa-3x mb-3"></i>
-                <p class="header_number">3764-552841</p>
+                <i class="fa-solid fa-phone fa-3x  mb-3"></i>
+                <p class="header_number">2974 36-8204</p>
             </a>
         </div>
         <div class="container_title">
+            <p>¡HACE TU PEDIDO!</p>
+            <!-- <i class="fa-solid fa-magnifying-glass fa-2x me-2 ms-2" id="botonbusqueda"></i> -->
+            
+            <input type="text" id="input1" class="inputText" placeholder="Ingrese nombre del menú">
 
-            <a class="me-3 text-light"><i class="fa-solid fa-cart-shopping fa-3x"></i></a>
-
+                <!-- <input type = "color" id="inputcolor">    -->
+                <a class="me-3 text-light"><i id="botonCarro" class="fa-solid fa-cart-shopping fa-2x"></i></a>
         </div>
-        <div>
-
+            <select class="btn btn-secondary dropdown-toggle mt-3 ms-3 " id="selectSort">
+                <option value="">ORDENAR POR PRECIO</option>
+                <option value="desc">Mayor a Menor</option>
+                <option value="asc">Menor a Mayor</option>
+            </select>
+          </div>
         </div>
+       
     </header>
- 
+
+    </div>
     <section class="table_precios">
         <div>
-         <table class="table ms-3 mt-5">
-            <tr>
-                <td><h3 class="title_product d-flex">CLÁSICO <p class="porciones ps-3 pt-2">8 PIEZAS</p></h3><p class="description">Salmón crudo, palta y queso Philadelphia (Arroz-Alga)</p></td>
-                <td><h4 class="precio">$1200 <i class="fa-solid fa-circle-plus ms-2"></i></h4></td>
-            </tr>
-            <tr>
-                <td><h3 class="title_product d-flex">PALTOSO <p class="porciones ps-3 pt-2">8 PIEZAS</p></h3><p class="description">Salmón crudo, palta y queso Philadelphia (Arroz-Alga-Palta)</p></td>
-                <td><h4 class="precio">$1300 <i class="fa-solid fa-circle-plus ms-2"></i></h4></td>
-            </tr>
-            <tr>
-                <td><h3 class="title_product d-flex">PASTA DE SALMÓN <p class="porciones ps-3 pt-2">8 PIEZAS</p></h3><p class="description"> Pasta de Salmón Cocido con verdeo y queso Philadelphia (Arroz-Alga)</p></td>
-                <td><h4 class="precio">$1200 <i class="fa-solid fa-circle-plus ms-2"></i></h4></td>
-            </tr>
-            <tr>
-                <td><h3 class="title_product d-flex">PASTA DE ATÚN <p class="porciones ps-3 pt-2">8 PIEZAS</p></h3><p class="description"> Pasta de Atún cocido con verdeo, queso Philadelphia y palta (Arroz-Alga)</p></td>
-                <td><h4 class="precio">$1000 <i class="fa-solid fa-circle-plus ms-2"></i></h4></td>
-            </tr>
-            <tr>
-                <td><h3 class="title_product d-flex">LANGOSTINO <p class="porciones ps-3 pt-2">8 PIEZAS</p></h3><p class="description">  Langostino frito, queso Philadelphia y pepino (Arroz-Alga)</p></td>
-                <td><h4 class="precio">$1200 <i class="fa-solid fa-circle-plus ms-2"></i></h4></td>
-            </tr>
-            <tr>
-                <td><h3 class="title_product d-flex">FRITO PANKO <p class="porciones ps-3 pt-2">8 PIEZAS</p></h3><p class="description"> Salmón crudo, palta y queso cremoso (Arroz-Alga-Panko)</p></td>
-                <td><h4 class="precio">$1350 <i class="fa-solid fa-circle-plus ms-2"></i></h4></td>
-            </tr>
-            <tr>
-                <td><h3 class="title_product d-flex">FRITO LANGOSTINO <p class="porciones ps-3 pt-2">8 PIEZAS</p></h3><p class="description"> Langostino, palta y queso cremoso (Arroz-Alga-Panko-Coco)</p></td>
-                <td><h4 class="precio">$1350 <i class="fa-solid fa-circle-plus ms-2"></i></h4></td>
-            </tr>
-            <tr>
-                <td><h3 class="title_product d-flex">CANICAMA<p class="porciones ps-3 pt-2">8 PIEZAS</p></h3><p class="description">Canicama, palta y queso Philadelphia (Arroz-Alga-Semillas de Sésamo)</p></td>
-                <td><h4 class="precio">$1100 <i class="fa-solid fa-circle-plus ms-2"></i></h4></td>
-            </tr>
-            <Var>   <tr>
-                <td><h3 class="title_product d-flex">ATÚN CRUDO <p class="porciones ps-3 pt-2">8 PIEZAS</p></h3><p class="description"> Atún crudo, palta y queso Brie (Arroz-Alga)</p></td>
-                <td><h4 class="precio">$1300 <i class="fa-solid fa-circle-plus ms-2"></i></h4></td>
-            </tr>
-            <tr>
-                <td><h3 class="title_product d-flex">ACEVICHADO<p class="porciones ps-3 pt-2">8 PIEZAS</p></h3><p class="description"> Salmón y langositno acevichado con verdeo, cilantro y lima (Arroz-Alga-Boniato frito)</p></td>
-                <td><h4 class="precio">$1300 <i class="fa-solid fa-circle-plus ms-2"></i></h4></td>
-            </tr></Var>
-        
-         </table>
+            <table id="generalTable" class="table ms-3 mt-5">
+            </table>
         </div>
 
 
     </section>
-  
-    
-<script src="./js/index.js"></script>
+
+
+    <script src="./js/index.js"></script>
 </body>
+
 </html>

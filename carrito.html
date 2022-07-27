@@ -24,7 +24,6 @@
 
     <header>
         <div class="header_carrito">
-
             <img src="./imagenes/PauloSushi_menu.png" class="mt-2 img-sushi" alt="">
             <img src="./imagenes/MENU.png" class="mt-2 img-sushi2">
             <a class=" mb-2 d-flex text-decoration-none text-secondary text-lg">
@@ -34,34 +33,53 @@
         </div>
         <div class="container_title">
             <p>¡HACE TU PEDIDO!</p>
-            <!-- <i class="fa-solid fa-magnifying-glass fa-2x me-2 ms-2" id="botonbusqueda"></i> -->
-            
             <input type="text" id="input1" class="inputText" placeholder="Ingrese nombre del menú">
-
-                <!-- <input type = "color" id="inputcolor">    -->
-                <a class="me-3 text-light"><i id="botonCarro" class="fa-solid fa-cart-shopping fa-2x"></i></a>
         </div>
-            <select class="btn btn-secondary dropdown-toggle mt-3 ms-3 " id="selectSort">
-                <option value="">ORDENAR POR PRECIO</option>
-                <option value="desc">Mayor a Menor</option>
-                <option value="asc">Menor a Mayor</option>
-            </select>
-          </div>
+        <div class="me-5 mt-3 d-flex justify-content-end">
+            
+            <a class="nav-link dropdown-toggle" style="cursor: pointer;" id="carritoGeneral">
+                <i id="carritoSeleccion" class="fa-solid fa-cart-shopping fa-2x icono"></i>
+            </a>
+            <div class="card" id="carritoCard" style="display: none;">
+                <div class="card-header">
+                    <b>Añadiste a tu carrito</b>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                              <th scope="col">Nombre</th>
+                              <th scope="col">Precio</th>
+                              <th scope="col">Cantidad</th>
+                              <th scope="col">&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody id="carritoCompra"></tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <div id="totalCarrito">
+                        <h4>Total: $0</h4>
+                    </div>
+                </div>
+            </div>
+            
         </div>
-       
+        
+        <select class="btn btn-secondary dropdown-toggle mt-3 ms-3 " id="selectSort">
+            <option value="">ORDENAR POR PRECIO</option>
+            <option value="desc">Mayor a Menor</option>
+            <option value="asc">Menor a Mayor</option>
+        </select>
+        </div>
     </header>
-
     </div>
     <section class="table_precios">
         <div>
             <table id="generalTable" class="table ms-3 mt-5">
             </table>
         </div>
-
-
     </section>
-
-
     <script src="./js/index.js"></script>
 </body>
 

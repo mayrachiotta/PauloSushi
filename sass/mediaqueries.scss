@@ -24,6 +24,11 @@
 
     .container_title {
 
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        height: 140px;
+
         p {
             font-family: $font;
             color: $colorpink;
@@ -31,9 +36,7 @@
         }
 
         .inputText {
-
-            width: 100px;
-            margin-left: 15px;
-        } 
+            padding: 5px 5px;
+        }
     }
 }

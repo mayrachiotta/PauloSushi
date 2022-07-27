@@ -1,5 +1,3 @@
-
-//DESAFIO 4
 /*
 /**
  * Definiendo clases y opciones de Menu
@@ -28,35 +26,110 @@ const Opcion10 = new Menu(10, "ACEVICHADO", "Salmón y langostino acevichado con
 const Menus = [Opcion1, Opcion2, Opcion3, Opcion4, Opcion5, Opcion6, Opcion7, Opcion8, Opcion9, Opcion10]
 
 /**
+ * Definicion de clase de CarritoItem
+ */
+class CarritoItem {
+    constructor(idMenu, cantidad, costo, nombre) {
+        this.idMenu = idMenu
+        this.cantidad = cantidad
+        this.costo = costo
+        this.nombre = nombre
+    }
+}
+
+class Carrito {
+    constructor(selecciondemenu, total) {
+        this.selecciondemenu = selecciondemenu
+        this.total = total
+    }
+    /**
+     * Funciones basicas para carrito
+     */
+    agregarAlcarrito(itemCarrito) {
+        const item = this.buscarItemPorId(itemCarrito.idMenu)
+        if (!item) {
+            this.selecciondemenu.push(itemCarrito)
+        } else {
+            item.cantidad += 1
+        }
+    }
+
+    buscarItemPorId(idMenu) {
+        return this.selecciondemenu.find(element => element.idMenu == idMenu)
+    }
+
+    eliminarDelCarro(Id) {
+        const indice = this.selecciondemenu.findIndex((menuaeliminar) => menuaeliminar.idMenu === Id)
+        this.selecciondemenu.splice(indice, 1)
+    }
+    SumarTotal() {
+        this.total = this.selecciondemenu.reduce((acumulador, menuElemento) => acumulador + (menuElemento.cantidad * menuElemento.costo), 0)
+    }
+
+}
+
+const ObjetoCarrito = new Carrito([], 0)
+
+/**
  * Incluyendo DOM
  */
 
 const generalTable = document.getElementById('generalTable')
 
-Menus.forEach(menu => {
-    generalTable.innerHTML += `
-    
-    <div>
-    <tr>
-    <td><h3 class="title_product d-flex"> ${menu.nombre} <p class="porciones ps-3 pt-2">8 PIEZAS</p></h3><p class="description">${menu.description}</p></td>
-    <td><h4 class="precio">${menu.precio} <i class="fa-solid fa-circle-plus ms-2"></i></h4></td>
-    </tr>
-    </div>
+const carritoCompra = document.getElementById('carritoCompra')
+function agregarCarritoItem(idMenu, cantidad, precio, nombre) {
+    ObjetoCarrito.agregarAlcarrito(new CarritoItem(idMenu, cantidad, precio, nombre))
+    mostrarItemsHtml()
+    setStorage()
+}
 
-    `
+function setTotalHtml() {
+    const total = document.getElementById('totalCarrito')
+    ObjetoCarrito.SumarTotal()
+    total.innerHTML = `<h4>Total: $${ObjetoCarrito.total}</h4>`
+}
+
+const setStorage = () => localStorage.setItem('carrito', JSON.stringify(ObjetoCarrito.selecciondemenu))
+
+function mostrarItemsHtml() {
+    carritoCompra.innerHTML = ''
+    ObjetoCarrito.selecciondemenu.forEach(item => {
+        const idDiv = 'seleccionado' + item.idMenu
+        carritoCompra.innerHTML += `
+        <tr id="${idDiv}">
+            <th scope="row">${item.nombre}</th>
+            <td>$${item.costo}</td>
+            <td>${item.cantidad}</td>
+            <td><button class="btn btn-danger" onclick="quitarElemento(${item.idMenu}, '${idDiv}')"> Eliminar</button></td>
+        </tr>
+        `
+    })
+    setTotalHtml()
+}
+// display: flex; overflow: auto; height-max: 300px;
+
+document.getElementById('carritoGeneral').addEventListener('click', () => {
+    if (document.getElementById('carritoCard')?.style?.display === 'block') {
+        document.getElementById('carritoCard').style = 'display:none';
+    } else {
+        document.getElementById('carritoCard').style = 'display:block';
+    }
 })
 
+/**
+ * Funcion para eliminar un item ya agregado al carrito
+ */
+const quitarElemento = (idMenu, idDiv) => {
+    ObjetoCarrito.eliminarDelCarro(idMenu)
+    const itemAEliminar = document.getElementById(idDiv)
+    if (itemAEliminar) itemAEliminar.remove()
+    setTotalHtml()
+    setStorage()
+}
 
 /**
  *Agregando EVENTOS
  */
-
-const botonCarro = document.getElementById("botonCarro") //utilizo mediante un metodo.
-
-botonCarro.addEventListener("click", () => { //"click es el nombre del evento"
-    console.log("di click en button")
-})
-
 const input1 = document.getElementById("input1")
 //const botonbusqueda = document.getElementById("botonbusqueda")
 input1.addEventListener('input', () => { //input es el evento
@@ -72,14 +145,11 @@ input1.addEventListener('input', () => { //input es el evento
         <div>
         <tr>
         <td><h3 class="title_product d-flex"> ${menufiltro.nombre} <p class="porciones ps-3 pt-2">8 PIEZAS</p></h3><p class="description">${menufiltro.description}</p></td>
-        <td><h4 class="precio">${menufiltro.precio} <i class="fa-solid fa-circle-plus ms-2"></i></h4></td>
+        <td><h4 class="precio">${menufiltro.precio} <i style:"cursor:pointer;" class="fa-solid fa-circle-plus ms-2"onclick="agregarCarritoItem(${menufiltro.id}, 1, ${menufiltro.precio},'${menufiltro.nombre}')"></i></h4></td>
         </tr>
         </div>
-        
-        
-        `
+        ` 
     })
-
 })
 
 const selectSort = document.getElementById("selectSort")
@@ -98,7 +168,7 @@ selectSort.addEventListener('change', (event) => {
         <div>
         <tr>
         <td><h3 class="title_product d-flex"> ${menufiltro.nombre} <p class="porciones ps-3 pt-2">8 PIEZAS</p></h3><p class="description">${menufiltro.description}</p></td>
-        <td><h4 class="precio">${menufiltro.precio} <i class="fa-solid fa-circle-plus ms-2"></i></h4></td>
+        <td><h4 class="precio">${menufiltro.precio} <i style:"cursor:pointer;" class="fa-solid fa-circle-plus ms-2" onclick="agregarCarritoItem(${menufiltro.id}, 1, ${menufiltro.precio},'${menufiltro.nombre}')"></i></h4></td>
         </tr>
         </div>
         
@@ -108,35 +178,24 @@ selectSort.addEventListener('change', (event) => {
     console.log("Di click en boton")
 })
 
-/**
- * Definicion de clase de CarritoItem
- */
-class CarritoItem {
-    constructor(idMenu, cantidad, costo) {
-        this.idMenu = idMenu
-        this.cantidad = cantidad
-        this.costo = costo
+
+function ejecucionInicial() {
+    Menus.forEach(menu => {
+        generalTable.innerHTML += `
+        <div>
+        <tr>
+        <td><h3 class="title_product d-flex"> ${menu.nombre} <p class="porciones ps-3 pt-2">8 PIEZAS</p></h3><p class="description">${menu.description}</p></td>
+        <td style="cursor:pointer;"><h4 class="precio">${menu.precio} <i style:"cursor:pointer;" class="fa-solid fa-circle-plus ms-2" onclick="agregarCarritoItem(${menu.id}, 1, ${menu.precio},'${menu.nombre}')"></i></h4></td>
+        </tr>
+        </div>
+        `
+    })
+    if (localStorage.getItem('carrito')) {
+        ObjetoCarrito.selecciondemenu = JSON.parse(localStorage.getItem('carrito'))
+        ObjetoCarrito.SumarTotal()
+        mostrarItemsHtml()
     }
 }
 
-class Carrito {
-    constructor(selecciondemenu, total) {
-        this.selecciondemenu = selecciondemenu
-        this.total = total
-    }
-    /**
-     * Funciones basicas para carrito
-     */
-    agregarAlcarrito(itemCarrito) {
-        this.selecciondemenu.push(itemCarrito)
-    }
-    eliminarDelCarro(Id) {
-        const indice = this.selecciondemenu.findIndex((menuaeliminar) => menuaeliminar.idMenu === Id)
-        this.selecciondemenu.splice(indice, 1)
-    }
-    SumarTotal() {
-        this.total = this.selecciondemenu.reduce((acumulador, menuElemento) => acumulador + (menuElemento.cantidad * menuElemento.costo), 0)
-    }
-
-}
+ejecucionInicial()
 

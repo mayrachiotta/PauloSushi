@@ -91,8 +91,7 @@ header .header_carrito {
     color: #FF7676;
     font-size: 20px; }
   .container_title .inputText {
-    width: 300px;
-    margin-right: 60px; }
+    padding: 15px 15px; }
 
 .table_precios div table tr .title_product {
   color: #FF7676;
@@ -120,10 +119,14 @@ header .header_carrito {
     display: none; }
   header .header_carrito a p {
     display: none; }
-  .container_title p {
-    font-family: "Fredoka One", cursive;
-    color: #FF7676;
-    font-size: 15px; }
-  .container_title .inputText {
-    width: 100px;
-    margin-left: 15px; } }
+  .container_title {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    height: 140px; }
+    .container_title p {
+      font-family: "Fredoka One", cursive;
+      color: #FF7676;
+      font-size: 15px; }
+    .container_title .inputText {
+      padding: 5px 5px; } }

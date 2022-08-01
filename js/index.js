@@ -47,11 +47,13 @@ class Carrito {
      */
     agregarAlcarrito(itemCarrito) {
         const item = this.buscarItemPorId(itemCarrito.idMenu)
-        if (!item) {
-            this.selecciondemenu.push(itemCarrito)
-        } else {
-            item.cantidad += 1
-        }
+        /* if (!item) {
+             this.selecciondemenu.push(itemCarrito)
+         } else {
+             item.cantidad += 1
+         }
+         */
+       !item ? this.selecciondemenu.push(itemCarrito) : item.cantidad += 1 //Operador Ternario
     }
 
     buscarItemPorId(idMenu) {

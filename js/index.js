@@ -53,7 +53,7 @@ class Carrito {
              item.cantidad += 1
          }
          */
-       !item ? this.selecciondemenu.push(itemCarrito) : item.cantidad += 1 //Operador Ternario
+       !item ? this.selecciondemenu.push(itemCarrito) : item.cantidad += 1 //Operador ternario
     }
 
     buscarItemPorId(idMenu) {
@@ -95,14 +95,16 @@ const setStorage = () => localStorage.setItem('carrito', JSON.stringify(ObjetoCa
 
 function mostrarItemsHtml() {
     carritoCompra.innerHTML = ''
-    ObjetoCarrito.selecciondemenu.forEach(item => {
-        const idDiv = 'seleccionado' + item.idMenu
+
+    ObjetoCarrito.selecciondemenu.forEach(item => { 
+        const {idMenu, nombre, costo, cantidad}  =item //desestructuracion de objeto
+        const idDiv = 'seleccionado' + idMenu
         carritoCompra.innerHTML += `
         <tr id="${idDiv}">
-            <th scope="row">${item.nombre}</th>
-            <td>$${item.costo}</td>
-            <td>${item.cantidad}</td>
-            <td><button class="btn btn-danger" onclick="quitarElemento(${item.idMenu}, '${idDiv}')"> Eliminar</button></td>
+            <th scope="row">${nombre}</th>
+            <td>$${costo}</td>
+            <td>${cantidad}</td>
+            <td><button class="btn btn-danger" onclick="quitarElemento(${idMenu}, '${idDiv}')"> Eliminar</button></td>
         </tr>
         `
     })

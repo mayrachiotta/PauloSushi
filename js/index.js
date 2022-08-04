@@ -47,12 +47,6 @@ class Carrito {
      */
     agregarAlcarrito(itemCarrito) {
         const item = this.buscarItemPorId(itemCarrito.idMenu)
-        /* if (!item) {
-             this.selecciondemenu.push(itemCarrito)
-         } else {
-             item.cantidad += 1
-         }
-         */
        !item ? this.selecciondemenu.push(itemCarrito) : item.cantidad += 1 //Operador ternario
     }
 
@@ -83,13 +77,51 @@ function agregarCarritoItem(idMenu, cantidad, precio, nombre) {
     ObjetoCarrito.agregarAlcarrito(new CarritoItem(idMenu, cantidad, precio, nombre))
     mostrarItemsHtml()
     setStorage()
+
+    Toastify({
+        text: `añadiste "${nombre.toLowerCase()}" a tu carrito`,
+        duration: 3000,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "bottom", // `top` or `bottom`
+        position: "right", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "linear-gradient(to bottom left,#0389A4, #053540)",
+        },
+        onClick: function(){} // Callback after click
+      }).showToast();
+
+
 }
 
 function setTotalHtml() {
     const total = document.getElementById('totalCarrito')
     ObjetoCarrito.SumarTotal()
-    total.innerHTML = `<h4>Total: $${ObjetoCarrito.total}</h4>`
-}
+    total.innerHTML = 
+    `<h4>Total: $${ObjetoCarrito.total}</h4>
+    <button type="button" id="buttonfinalizar" class="btn btn-secondary mt-1">Finalizar compra</button>
+    `
+    const buttonfinalizar = document.getElementById("buttonfinalizar")
+    buttonfinalizar.addEventListener("click", () => {
+    // `${document.getElementById('carritoCard').outerHTML}`
+        Swal.fire({
+            title: '¿Deseas finalizar tu pedido? ',
+            showCancelButton: true,
+            confirmButtonText: 'Finalizar pedido',
+            denyButtonText: `Don't save`,
+            
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire('Tu pedido ha sido confirmado', '', 'success')
+            }
+          })
+
+    })
+    
+
+}   
 
 const setStorage = () => localStorage.setItem('carrito', JSON.stringify(ObjetoCarrito.selecciondemenu))
 
@@ -149,7 +181,7 @@ input1.addEventListener('input', () => { //input es el evento
         <div>
         <tr>
         <td><h3 class="title_product d-flex"> ${menufiltro.nombre} <p class="porciones ps-3 pt-2">8 PIEZAS</p></h3><p class="description">${menufiltro.description}</p></td>
-        <td><h4 class="precio">${menufiltro.precio} <i style:"cursor:pointer;" class="fa-solid fa-circle-plus ms-2"onclick="agregarCarritoItem(${menufiltro.id}, 1, ${menufiltro.precio},'${menufiltro.nombre}')"></i></h4></td>
+        <td><h4 class="precio">${menufiltro.precio} <i style:"cursor:pointer;" class="fa-solid fa-circle-plus ms-2" onclick="agregarCarritoItem(${menufiltro.id}, 1, ${menufiltro.precio},'${menufiltro.nombre}')"></i></h4></td>
         </tr>
         </div>
         ` 

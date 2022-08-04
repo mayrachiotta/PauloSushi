@@ -12,7 +12,10 @@
         crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="./css/styles.css">
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <script src="https://kit.fontawesome.com/bc7e4c6480.js" crossorigin="anonymous"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
@@ -37,14 +40,14 @@
         </div>
         <div class="me-5 mt-3 d-flex justify-content-end">
             
-            <a class="nav-link dropdown-toggle" style="cursor: pointer;" id="carritoGeneral">
-                <i id="carritoSeleccion" class="fa-solid fa-cart-shopping fa-2x icono"></i>
+            <a id="carritoGeneral">
+                <i id="carritoSeleccion" class="fa-solid fa-cart-shopping fa-2x icono me-3" style="cursor: pointer;"></i>
             </a>
-            <div class="card" id="carritoCard" style="display: none;">
+            <div class="card position-fixed" id="carritoCard" style="display: none;">
                 <div class="card-header">
                     <b>Añadiste a tu carrito</b>
                 </div>
-                <div class="card-body">
+                <div class="card-body" style="height: 200px; overflow: auto; display: flex;">
                     <table class="table">
                         <thead>
                             <tr>

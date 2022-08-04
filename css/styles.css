@@ -93,6 +93,9 @@ header .header_carrito {
   .container_title .inputText {
     padding: 15px 15px; }
 
+div a .icono {
+  color: #025b6d; }
+
 .table_precios div table tr .title_product {
   color: #FF7676;
   font-family: "Fredoka One", cursive; }

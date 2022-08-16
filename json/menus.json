@@ -1,0 +1,54 @@
+
+[
+    {   "id":1,
+        "nombre":"CLASICO",
+        "descripcion":"Salmón crudo, palta y queso Philadelphia (Arroz-Alga)",
+        "precio":1200
+    },
+    {   "id":2,
+        "nombre":"PALTOSO",
+        "descripcion":"Salmón crudo, palta y queso Philadelphia (Arroz-Alga-Palta)",
+        "precio":1300
+    },
+    {   "id":3,
+        "nombre":"PASTA DE ATUN",
+        "descripcion":"Pasta de Salmón cocido con verdeo y queso Philadelphia (Arroz-Alga",
+        "precio":1200
+    },
+    {   "id":4,
+        "nombre":"ATUN COCIDO",
+        "descripcion":"Pasta de Atún cocido con verdeo, queso Philadelphia y palta (Arroz-Alga)",
+        "precio":1000
+    },
+    {   "id":5,
+        "nombre":"LANGOSTINO",
+        "descripcion":"Langostino frito, queso Philadelphia y pepino (Arroz-Alga)",
+        "precio":1200
+    },
+    {   "id":6,
+        "nombre":"FRITO PANKO",
+        "descripcion":"Salmón Crudo, palta y queso cremoso (Arroz-Alga-Panko)",
+        "precio":1500
+    },
+    {   "id":7,
+        "nombre":"FRITO LANGOSTINO",
+        "descripcion":"Langostino, Palta y queso cremoso (Arroz-Alga-Panko-Coco)" ,
+        "precio":1350
+    },
+    {   "id":8,
+        "nombre":"CANICAMA",
+        "descripcion":"Canicama, palta y queso Philadelphia (Arroz-Alga-Semillas de sésamo)",
+        "precio":1100
+    },
+    {   "id":9,
+        "nombre":"ATÚN CRUDO",
+        "descripcion":"Atún crudo, palta y queso Brie (Arroz-Alga) ",
+        "precio":1300
+    },
+    {   "id":10,
+        "nombre":"ACEVICHADO",
+        "descripcion":"Salmón y langostino acevichado con verdeo, cilandro y lima (Arroz-Alga-Boniato Frito)",
+        "precio":1300
+    }
+]
+

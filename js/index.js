@@ -1,29 +1,34 @@
-/*
-/**
- * Definiendo clases y opciones de Menu
- */
 class Menu {
-    constructor(id, nombre, description, precio) {
+    constructor(id, nombre, descripcion, precio) {
         this.id = id
         this.nombre = nombre
-        this.description = description
+        this.descripcion = descripcion
         this.precio = precio
     }
 }
+let Menus = []
+/* Se obtienen los menus a traves de archivo json mediante Fetch*/
 
-const Opcion1 = new Menu(1, "CLÁSICO", "Salmón crudo, palta y queso Philadelphia (Arroz-Alga)", 1200)
-const Opcion2 = new Menu(2, "PALTOSO", "Salmón crudo, palta y queso Philadelphia (Arroz-Alga-Palta)", 1300)
-const Opcion3 = new Menu(3, "PASTA DE SALMÓN", "Pasta de Salmón cocido con verdeo y queso Philadelphia (Arroz-Alga)", 1200)
-const Opcion4 = new Menu(4, "ATÚN COCIDO", "Pasta de Atún cocido con verdeo, queso Philadelphia y palta (Arroz-Alga) ", 1000)
-const Opcion5 = new Menu(5, "LANGOSTINO", "Langostino frito, queso Philadelphia y pepino (Arroz-Alga)", 1200)
-const Opcion6 = new Menu(6, "FRITO PANKO", "Salmón Crudo, palta y queso cremoso (Arroz-Alga-Panko)", 1500)
-const Opcion7 = new Menu(7, "FRITO LANGOSTINO", "Langostino, Palta y queso cremoso (Arroz-Alga-Panko-Coco)", 1350)
-const Opcion8 = new Menu(8, "CANICAMA", "Canicama, palta y queso Philadelphia (Arroz-Alga-Semillas de sésamo)", 1100)
-const Opcion9 = new Menu(9, "ATÚN CRUDO", "Atún crudo, palta y queso Brie (Arroz-Alga) ", 1300)
-const Opcion10 = new Menu(10, "ACEVICHADO", "Salmón y langostino acevichado con verdeo, cilandro y lima (Arroz-Alga-Boniato Frito)", 1300)
+async function mostrarProductos() {
+    const response = await fetch ('./json/menus.json')
+    const menusParseados = await response.json()
 
+     menusParseados.forEach(menu => {
+     Menus.push(new Menu(menu.id, menu.nombre, menu.descripcion, menu.precio))
+     
+        generalTable.innerHTML += `
+        <div>
+        <tr>
+        <td><h3 class="title_product d-flex"> ${menu.nombre} <p class="porciones ps-3 pt-2">8 PIEZAS</p></h3><p class="descripcion">${menu.descripcion}</p></td>
+        <td style="cursor:pointer;"><h4 class="precio">${menu.precio} <i style:"cursor:pointer;" class="fa-solid fa-circle-plus ms-2" onclick="agregarCarritoItem(${menu.id}, 1, ${menu.precio},'${menu.nombre}')"></i></h4></td>
+        </tr>
+        </div>
+        `
+     })
+}
 
-const Menus = [Opcion1, Opcion2, Opcion3, Opcion4, Opcion5, Opcion6, Opcion7, Opcion8, Opcion9, Opcion10]
+// mostrarProductos()
+
 
 /**
  * Definicion de clase de CarritoItem
@@ -84,13 +89,13 @@ function agregarCarritoItem(idMenu, cantidad, precio, nombre) {
         destination: "https://github.com/apvarun/toastify-js",
         newWindow: true,
         close: true,
-        gravity: "bottom", // `top` or `bottom`
-        position: "right", // `left`, `center` or `right`
-        stopOnFocus: true, // Prevents dismissing of toast on hover
+        gravity: "bottom", 
+        position: "right", 
+        stopOnFocus: true, 
         style: {
           background: "linear-gradient(to bottom left,#0389A4, #053540)",
         },
-        onClick: function(){} // Callback after click
+        onClick: function(){} 
       }).showToast();
 
 
@@ -105,19 +110,32 @@ function setTotalHtml() {
     `
     const buttonfinalizar = document.getElementById("buttonfinalizar")
     buttonfinalizar.addEventListener("click", () => {
-    // `${document.getElementById('carritoCard').outerHTML}`
+
+        if(ObjetoCarrito.total==0){
+        
+            Swal.fire({
+                icon: 'warning',
+                text: 'Tu carrito está vacío',
+              })
+
+        } else {
+
         Swal.fire({
-            title: '¿Deseas finalizar tu pedido? ',
+            title: 'Confirmar pedido ',
             showCancelButton: true,
-            confirmButtonText: 'Finalizar pedido',
+            confirmButtonText: 'Si ',
+            cancelButtonText: 'No',
             denyButtonText: `Don't save`,
             
           }).then((result) => {
             if (result.isConfirmed) {
               Swal.fire('Tu pedido ha sido confirmado', '', 'success')
-            }
-          })
 
+            } 
+            
+
+          })
+        }
     })
     
 
@@ -142,7 +160,6 @@ function mostrarItemsHtml() {
     })
     setTotalHtml()
 }
-// display: flex; overflow: auto; height-max: 300px;
 
 document.getElementById('carritoGeneral').addEventListener('click', () => {
     if (document.getElementById('carritoCard')?.style?.display === 'block') {
@@ -167,8 +184,7 @@ const quitarElemento = (idMenu, idDiv) => {
  *Agregando EVENTOS
  */
 const input1 = document.getElementById("input1")
-//const botonbusqueda = document.getElementById("botonbusqueda")
-input1.addEventListener('input', () => { //input es el evento
+input1.addEventListener('input', () => { 
     generalTable.innerHTML = ""
 
     let menufiltrado = Menus.filter(menuafiltrar => menuafiltrar.nombre.toLowerCase().includes(input1.value.toLowerCase()))
@@ -180,7 +196,7 @@ input1.addEventListener('input', () => { //input es el evento
         
         <div>
         <tr>
-        <td><h3 class="title_product d-flex"> ${menufiltro.nombre} <p class="porciones ps-3 pt-2">8 PIEZAS</p></h3><p class="description">${menufiltro.description}</p></td>
+        <td><h3 class="title_product d-flex"> ${menufiltro.nombre} <p class="porciones ps-3 pt-2">8 PIEZAS</p></h3><p class="descripcion ">${menufiltro.descripcion}</p></td>
         <td><h4 class="precio">${menufiltro.precio} <i style:"cursor:pointer;" class="fa-solid fa-circle-plus ms-2" onclick="agregarCarritoItem(${menufiltro.id}, 1, ${menufiltro.precio},'${menufiltro.nombre}')"></i></h4></td>
         </tr>
         </div>
@@ -203,7 +219,7 @@ selectSort.addEventListener('change', (event) => {
         
         <div>
         <tr>
-        <td><h3 class="title_product d-flex"> ${menufiltro.nombre} <p class="porciones ps-3 pt-2">8 PIEZAS</p></h3><p class="description">${menufiltro.description}</p></td>
+        <td><h3 class="title_product d-flex"> ${menufiltro.nombre} <p class="porciones ps-3 pt-2">8 PIEZAS</p></h3><p class="descripcion">${menufiltro.descripcion}</p></td>
         <td><h4 class="precio">${menufiltro.precio} <i style:"cursor:pointer;" class="fa-solid fa-circle-plus ms-2" onclick="agregarCarritoItem(${menufiltro.id}, 1, ${menufiltro.precio},'${menufiltro.nombre}')"></i></h4></td>
         </tr>
         </div>
@@ -215,17 +231,8 @@ selectSort.addEventListener('change', (event) => {
 })
 
 
-function ejecucionInicial() {
-    Menus.forEach(menu => {
-        generalTable.innerHTML += `
-        <div>
-        <tr>
-        <td><h3 class="title_product d-flex"> ${menu.nombre} <p class="porciones ps-3 pt-2">8 PIEZAS</p></h3><p class="description">${menu.description}</p></td>
-        <td style="cursor:pointer;"><h4 class="precio">${menu.precio} <i style:"cursor:pointer;" class="fa-solid fa-circle-plus ms-2" onclick="agregarCarritoItem(${menu.id}, 1, ${menu.precio},'${menu.nombre}')"></i></h4></td>
-        </tr>
-        </div>
-        `
-    })
+async function ejecucionInicial() {
+    await mostrarProductos()
     if (localStorage.getItem('carrito')) {
         ObjetoCarrito.selecciondemenu = JSON.parse(localStorage.getItem('carrito'))
         ObjetoCarrito.SumarTotal()
